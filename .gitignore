@@ -1,0 +1,20 @@
+# Godot generated data
+.godot/
+.import/
+.mono/
+
+# Export/build outputs
+export/
+exports/
+build/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Editor/IDE settings
+.idea/
