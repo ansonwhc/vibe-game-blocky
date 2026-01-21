@@ -29,4 +29,3 @@ into standardized instruction files that Codex can follow to build a Godot game.
 2. Translate that into structured requirements in `spec/1_GAME_SPEC.md`.
 3. Keep project-wide rules in `standards/` (testing, docs, directories, coding, etc).
 4. Use `templates/PROMPT_CHAIN.md` as the prompt-chaining plan for Codex.
-
