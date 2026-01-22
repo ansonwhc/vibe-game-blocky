@@ -12,8 +12,8 @@ var tile_thickness := 0.3
 var cube_size := 1.6
 var grid_origin := Vector3.ZERO
 
-var base_color := Color(0.9, 0.9, 0.9)
-var active_color := Color(1.0, 0.85, 0.4)
+var base_color := Color(0.85, 0.87, 0.92)
+var active_color := Color(1.0, 0.75, 0.2)
 var base_material: StandardMaterial3D
 var active_material: StandardMaterial3D
 

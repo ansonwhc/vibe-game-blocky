@@ -12,4 +12,5 @@
 - Polish visuals with prototype mini bundle textures for tiles and block.
 - Document prototype mini bundle usage in `prompt-chain/spec/2_PROJECT_RULES.md`.
 - Render the block as a single mesh when not split and animate rolls with rotation.
+- Restore distinct tile and block colors for readability.
 - Tests: `godot --headless --quit` (pass with escalated; sandbox run crashed with Signal 6).
