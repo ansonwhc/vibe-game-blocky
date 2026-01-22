@@ -13,4 +13,8 @@
 - Document prototype mini bundle usage in `prompt-chain/spec/2_PROJECT_RULES.md`.
 - Render the block as a single mesh when not split and animate rolls with rotation.
 - Restore distinct tile and block colors for readability.
+- Keep trigger tile colors consistent across levels and split near teleporter in level 3.
+- Treat level 1 goal as a hole and play a fall animation on completion.
+- Revert level 1 to a standard goal tile with no holes in the floor.
+- Keep the block standing on the goal tile when completing a level.
 - Tests: `godot --headless --quit` (pass with escalated; sandbox run crashed with Signal 6).

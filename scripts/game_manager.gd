@@ -24,6 +24,8 @@ var tile_nodes: Dictionary = {}
 var bridge_states: Dictionary = {}
 var grid_size := Vector2i.ZERO
 var grid_origin := Vector3.ZERO
+var goal_cell := Vector2i.ZERO
+var has_goal_cell := false
 
 var cell_a := Vector2i.ZERO
 var cell_b := Vector2i.ZERO
@@ -130,6 +132,8 @@ func _post_move(previous_cells: Array) -> void:
 
 func _load_level(level_data: Dictionary) -> void:
 	current_level = level_data
+	has_goal_cell = current_level.has("goal")
+	goal_cell = current_level.get("goal", Vector2i.ZERO)
 	grid_size = current_level.get("size", Vector2i(7, 7))
 	grid_origin = Vector3(-((grid_size.x - 1) * tile_size) * 0.5, 0.0, -((grid_size.y - 1) * tile_size) * 0.5)
 	bridge_states = current_level.get("bridge_states", {}).duplicate()
@@ -245,7 +249,11 @@ func _check_weak(cells: Array) -> bool:
 	return false
 
 func _check_goal(cells: Array) -> bool:
-	return not is_split and cell_a == cell_b and _cell_is_type(cell_a, "goal")
+	if is_split or cell_a != cell_b:
+		return false
+	if has_goal_cell:
+		return cell_a == goal_cell
+	return _cell_is_type(cell_a, "goal")
 
 func _cell_is_type(cell: Vector2i, tile_type: String) -> bool:
 	var info = tile_infos.get(cell, {})
@@ -258,6 +266,8 @@ func _is_any_cell_invalid(cells: Array) -> bool:
 	return false
 
 func _is_cell_walkable(cell: Vector2i) -> bool:
+	if has_goal_cell and cell == goal_cell:
+		return not is_split and cell_a == cell_b
 	if not tile_infos.has(cell):
 		return false
 	var info = tile_infos.get(cell, {})

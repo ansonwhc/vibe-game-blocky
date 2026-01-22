@@ -42,8 +42,8 @@ static func _make_level_three() -> Dictionary:
 	_fill_rect(tiles, Vector2i(1, 4), Vector2i(3, 4), "floor")
 	_fill_rect(tiles, Vector2i(6, 4), Vector2i(7, 4), "floor")
 	_add_tile(tiles, Vector2i(2, 1), "teleporter", {
-		"target_a": Vector2i(1, 4),
-		"target_b": Vector2i(3, 4)
+		"target_a": Vector2i(1, 1),
+		"target_b": Vector2i(3, 1)
 	})
 	_add_tile(tiles, Vector2i(2, 4), "button", {"group": "bridge_a"})
 	_add_tile(tiles, Vector2i(4, 4), "bridge", {"group": "bridge_a"})
