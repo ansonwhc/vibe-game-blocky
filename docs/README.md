@@ -2,8 +2,8 @@
 
 ## Overview
 
-- Game title:
-- One-line pitch:
+- Game title: Blocky Roll
+- One-line pitch: Roll a rectangular block across floating tile grids, toggling switches and bridges to reach the goal hole.
 
 ## Setup
 
@@ -26,9 +26,15 @@
 
 ## Roadmap
 
+- Implement grid + block movement with upright/flat orientation logic.
+- Add core tile types (goal, weak, switches, bridges, buttons, teleporters).
+- Build three MVP levels and a simple level loader.
+- Create basic UI (start menu, pause, level indicator, reset).
+- Add minimal SFX and test the core loop.
+
 ## Directory Plan
 
-- `scenes/` for main, game, UI
-- `scripts/` for grid, tetromino, game manager, input
+- `scenes/` for main, level, block, tile, and menu scenes
+- `scripts/` for grid, block controller, level manager, tile behaviors
 - `ui/` for HUD and menus
-- `assets/` for placeholder SFX/music
+- `assets/` for placeholder meshes and audio
