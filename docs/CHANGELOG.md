@@ -17,4 +17,11 @@
 - Treat level 1 goal as a hole and play a fall animation on completion.
 - Revert level 1 to a standard goal tile with no holes in the floor.
 - Keep the block standing on the goal tile when completing a level.
+- Add three larger, more complex levels with switches, bridges, and teleporter splitting.
+- Remove level 6 from the level list.
+- Zoom in the camera framing to reduce empty space around levels.
+- Zoom in further on larger levels for tighter framing.
+- Rotate the camera slightly to the side for a more angled view.
+- Lower the camera height slightly for a tighter framing.
+- Use a continuous formula to scale camera distance by level size.
 - Tests: `godot --headless --quit` (pass with escalated; sandbox run crashed with Signal 6).

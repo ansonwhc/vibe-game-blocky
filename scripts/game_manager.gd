@@ -169,8 +169,14 @@ func _clear_tiles() -> void:
 
 func _update_camera() -> void:
 	var max_dim = max(grid_size.x, grid_size.y)
-	camera.position = Vector3(0.0, max_dim * 2.4, max_dim * 2.4)
+	var distance = _camera_distance_for_size(max_dim)
+	camera.position = Vector3(distance * 0.25, distance * 0.8, distance)
+	# camera.position = Vector3(distance * 0.5, distance * 0.9, distance)
 	camera.look_at(Vector3.ZERO, Vector3.UP)
+
+func _camera_distance_for_size(max_dim: int) -> float:
+	var multiplier = 1.8 - 0.05 * float(max_dim)
+	return max_dim * multiplier
 
 func _cell_to_world(cell: Vector2i) -> Vector3:
 	return Vector3(cell.x * tile_size, 0.0, cell.y * tile_size) + grid_origin
