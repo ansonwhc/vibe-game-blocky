@@ -2,6 +2,7 @@
 
 Each stage produces or updates a file.
 Keep outputs brief and file-based. Ask clarifying questions only if needed.
+Run incremental tests (Godot CLI or GUT) before moving to the next stage when code or gameplay behavior changes.
 
 ## Stage 0: Intake
 
@@ -37,6 +38,7 @@ Goal: Implement gameplay and UI.
 Input: GAME_SPEC + standards.
 Action: Create scenes/scripts/assets within the directory rules.
 Output: Code and scene files; update docs.
+Gate: Run relevant tests (Godot CLI or GUT) before proceeding.
 
 ## Stage 5: Test
 
@@ -44,6 +46,7 @@ Goal: Verify core loop.
 Input: `standards/TESTING.md`.
 Action: Run manual checks; note failures.
 Output: Update `docs/CHANGELOG.md` with test notes.
+Gate: If any test fails, fix and re-run before moving on.
 
 ## Stage 6: Polish
 
@@ -51,3 +54,4 @@ Goal: Tuning, UX improvements, cleanup.
 Input: Test results + feedback.
 Action: Adjust balance and UX; update docs.
 Output: Updated files and changelog.
+Gate: Run incremental tests (Godot CLI or GUT) before finishing.

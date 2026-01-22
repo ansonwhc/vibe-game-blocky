@@ -14,6 +14,7 @@ Always source requirements from `spec/1_GAME_SPEC.md` and `spec/2_PROJECT_RULES.
 - Respect `standards/` rules (testing, directories, docs, coding).
 - Keep the MVP small and playable.
 - Update `docs/CHANGELOG.md` after each meaningful change.
+- Run tests incrementally (Godot CLI or GUT) before moving to the next stage.
 
 ## When Unsure
 
@@ -30,3 +31,4 @@ into standardized instruction files that you can follow to build a Godot game.
 3. Keep project-wide rules in `standards/` (testing, docs, directories, coding, etc).
 4. Use `templates/PROMPT_CHAIN.md` as the prompt-chaining plan.
 5. Follow instuctions in `templates/PROMPT_CHAIN.md`.
+6. Run incremental tests (Godot CLI and GUT) before proceeding to each next stage.
