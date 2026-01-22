@@ -5,6 +5,8 @@
 [node name="Block" type="Node3D"]
 script = ExtResource(1)
 
+[node name="Combined" type="MeshInstance3D" parent="."]
+
 [node name="CubeA" type="MeshInstance3D" parent="."]
 
 [node name="CubeB" type="MeshInstance3D" parent="."]

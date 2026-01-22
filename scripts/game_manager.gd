@@ -100,7 +100,7 @@ func _attempt_move(dir: Vector2i) -> void:
 	move_count += 1
 	emit_signal("move_count_changed", move_count)
 	is_moving = true
-	await block_visual.animate_to(next_a, next_b, is_split, active_half, move_duration)
+	await block_visual.animate_to(cell_a, cell_b, next_a, next_b, is_split, active_half, move_duration)
 	cell_a = next_a
 	cell_b = next_b
 	await _post_move(previous_cells)

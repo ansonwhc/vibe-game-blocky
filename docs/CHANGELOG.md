@@ -9,4 +9,7 @@
 - Add main menu, HUD, and pause UI plus runtime input mappings.
 - Wire main scene and project settings; document controls.
 - Add move counter to the HUD and track moves per level.
+- Polish visuals with prototype mini bundle textures for tiles and block.
+- Document prototype mini bundle usage in `prompt-chain/spec/2_PROJECT_RULES.md`.
+- Render the block as a single mesh when not split and animate rolls with rotation.
 - Tests: `godot --headless --quit` (pass with escalated; sandbox run crashed with Signal 6).
