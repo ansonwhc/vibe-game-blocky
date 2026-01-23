@@ -1,7 +1,8 @@
 extends Node3D
 class_name BlockVisual
 
-const BLOCK_TEXTURE_PATH = "res://addons/prototype_mini_bundle/prototype_light.png"
+const BLOCK_TEXTURE_PATH = "res://assets/texture/prototype_light.png"
+const BLOCK_TRIPLANAR_SCALE = Vector3(0.35, 0.35, 0.35)
 
 @onready var combined: MeshInstance3D = $Combined
 @onready var cube_a: MeshInstance3D = $CubeA
@@ -125,6 +126,8 @@ func _ensure_materials() -> void:
 	if texture != null:
 		base_material.albedo_texture = texture
 		base_material.uv1_triplanar = true
+		base_material.uv1_scale = BLOCK_TRIPLANAR_SCALE
+		base_material.uv1_world_triplanar = true
 	base_material.albedo_color = base_color
 	active_material = base_material.duplicate() as StandardMaterial3D
 	active_material.albedo_color = active_color
