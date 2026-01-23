@@ -13,3 +13,7 @@
 - Switch active half: X
 - Reset level: Back/Select
 - Pause: Start
+
+## Touch (mobile)
+
+- Move: Swipe up, down, left, or right

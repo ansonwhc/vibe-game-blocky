@@ -7,6 +7,8 @@ extends Node
 
 var levels: Array = []
 var in_game := false
+@export var swipe_min_distance := 80.0
+var swipe_start_positions: Dictionary = {}
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -33,6 +35,19 @@ func _process(_delta: float) -> void:
 			_resume_game()
 		else:
 			_pause_game()
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch:
+		var touch_event := event as InputEventScreenTouch
+		if touch_event.pressed:
+			swipe_start_positions[touch_event.index] = touch_event.position
+		else:
+			if not swipe_start_positions.has(touch_event.index):
+				return
+			var start_pos: Vector2 = swipe_start_positions[touch_event.index]
+			swipe_start_positions.erase(touch_event.index)
+			if in_game and not get_tree().paused:
+				_handle_swipe(start_pos, touch_event.position)
 
 func _on_level_selected(level_index: int) -> void:
 	_start_level(level_index)
@@ -89,3 +104,25 @@ func _on_level_completed() -> void:
 
 func _on_level_failed(_reason: String) -> void:
 	hud.show_status("Fell!", 0.8)
+
+func _handle_swipe(start_pos: Vector2, end_pos: Vector2) -> void:
+	var delta = end_pos - start_pos
+	if delta.length() < swipe_min_distance:
+		return
+	if abs(delta.x) > abs(delta.y):
+		if delta.x > 0.0:
+			_trigger_action("move_right")
+		else:
+			_trigger_action("move_left")
+	else:
+		if delta.y > 0.0:
+			_trigger_action("move_down")
+		else:
+			_trigger_action("move_up")
+
+func _trigger_action(action_name: String) -> void:
+	Input.action_press(action_name)
+	call_deferred("_release_action", action_name)
+
+func _release_action(action_name: String) -> void:
+	Input.action_release(action_name)
