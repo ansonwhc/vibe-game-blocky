@@ -62,3 +62,23 @@ jobs:
         with:
           branch: gh-pages
           folder: export/web
+
+  notify-portal:
+    needs: export
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Dispatch latest build to portal
+        env:
+          PORTAL_REPO: ansonwhc/prontog
+          PORTAL_TOKEN: ${{ secrets.PORTAL_DISPATCH_TOKEN }}
+          GAME_ID: ${{ github.event.repository.name }}
+        run: |
+          payload=$(printf '{"event_type":"game_build","client_payload":{"game_id":"%s","game_repo":"%s","artifact_name":"${{ github.event.repository.name }}-game-exports"}}' "$GAME_ID" "${{ github.repository }}")
+          curl -L \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: token ${PORTAL_TOKEN}" \
+            "https://api.github.com/repos/${PORTAL_REPO}/dispatches" \
+            -d "$payload"
